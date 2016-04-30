@@ -1,0 +1,31 @@
+1,整体思路解析
+	当用户注册成功的时候，会返回一个页面info.jsp，提示用登录成功三秒后，返回到完善用户资料的页面。
+
+二,
+情景分析：
+	当我们执行更新的时候，hibernate默认会把所有的字段都更新一遍，这样有一个缺点，效率低，没有传入的值的字段，会把这个字段
+	原有的值变为null
+解决方案：
+1，使用hql语句，可以做到局部的更新，但是有一个很麻烦的地方，如果我们需要局部更新很多的字段，那么就会写很多的代码，
+       刚好，我们这个完善用户信息就会更新很多的字段，所以这样还是不行的
+2，相对于我们这个程序还是使用hibernate的默认的方法，但是我们要使用
+	input hidden这个标签来设置vo的值。
+	也就是说重新更新了一些字段更原来的一样，比如说名字性别，不过，这些字段的长度都不大，所以就迁就这样设计吧。
+	
+	注意，在这里我出现了一个非常低级的错误，那就是我在写
+		<input type="hidden" id="userName" name="userName" value="${globle_user.userName }">
+		<input type="hidden" id="gender" name="gender" value="${globle_user.gender }">
+		<input type="hidden" id="password" name="password" value="${globle_user.password }">
+		<input type="hidden" id="id" name="id" value="${globle_user.id }">	
+	不小心name=id多了一个，页面报出比处理的异常，所以，下次不要在犯这样的错误。
+	
+总结：
+	我个人觉得这个小模块的开发中最应该要考虑的问题就是hibernate的局部更新的问题
+	当然一般情况下，我们是希望使用布局的处理的方法是最好的，这样的性能方法会有所提升，但是，我在这个程序的开发中，我还是偷懒
+	了一下，使用的是hibernate的默认的哦全部更新，所以
+	在页面一定要使用<input type="hidden">这个标签来完成开发。
+	
+	不过我还是觉得尽量使用局部的方法会更好的一点	
+	
+所以，我决定在dao底层封装一个来处理局部更新的方法。
+	partialRenewal

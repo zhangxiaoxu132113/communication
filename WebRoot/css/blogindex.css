@@ -1,0 +1,465 @@
+*{ margin:0px; padding:0px;}
+body{
+	margin:0px; padding:0px;
+	background: #EBEEF5 url("../image/blog/top_bg.png") repeat-x top;
+	font: 12px Arial, Helvetica, Sans-Serif;
+}
+/* 常规样式的处理 */
+ul li{
+	list-style: none;
+	display: inline;
+}
+a:LINK ,a:VISITED {
+	text-decoration: none;
+}
+#container{
+	width:1200px;
+	margin:0px auto;
+}
+/* 处理页面头部的样式 */
+#header{
+	height:47px;
+	/* border:1px solid red; */
+}
+#logo h1{
+	font-size:30px;
+	color: #F3F3FE;
+	text-shadow: 2px 2px 0px #000;
+}
+#search_text {
+	position: absolute;
+	left: 360px;
+	top: 8px;
+	width: 240px;
+	height: 21px;
+	border-top: 2px solid #223234;
+	border-left: 3px solid #223234;
+}
+
+#search_bt {
+	position: absolute;
+	top: 8px;
+	left: 608px;
+}
+
+
+#navgitor_level_one{
+	float:right;
+	height:45px;
+	width:360px;
+	border:0px;
+}
+#navgitor_level_one ul{
+	margin-left:50px;
+		margin-top:8px;
+}
+#navgitor_level_one ul li a{
+	/* width:90px; */
+	height:45px;
+	float:left;
+
+}
+.navgitor_level_one_text a{
+	margin-right:10px;
+	margin-left:5px;
+	padding-top:5px;
+}
+
+#navgitor_level_one ul li a:VISITED, #navgitor_level_one ul li a:LINK{
+	color:#F3F3FE;
+	text-decoration: none;
+}
+#navgitor_level_one ul li a:HOVER{
+	color:#F29E50;
+	text-decoration: none;
+	
+} 
+
+/* #navgitor_level_one{
+	float:right;
+	width:360px;
+	height:43px;
+	border:1px solid red;
+	margin-top:5px;
+}
+
+#navgitor_level_one ul li a{
+	float:left;
+	width:85px;
+	height:30px;
+	text-align: center;
+	color:#F3F3FE;
+}
+#navgitor_level_one ul li a:VISITED,#navgitor_level_one ul li a:LINK{
+	color:#F3F3FE;
+	text-decoration: none;
+}
+#navgitor_level_one ul li a:HOVER{
+	color:#EBEEF5;
+	text-decoration: underline;
+} */
+/* -----------------------------------end------------------------------------- */
+/* 处理页面中间的样式 */
+#pagebody{
+	clear:right;
+	display: table;
+	border-spacing: 0px;
+}
+#pagebody_row{
+	display: table-row;
+
+}
+#mainbody{
+	display: table-cell;
+	background-color:#EBEEF5;
+	background-image:url("../image/blog/mainbody_bg.jpg"),url("../image/blog/white_bg.png") ;
+	background-repeat:no-repeat,no-repeat;
+	background-position:top,0px 321px;
+	
+	vertical-align: top;
+	padding-top:150px;
+	
+}
+#mainbody_table{
+	display: table;
+}
+#mainbody_table_row{
+	display: table-row;
+}
+/* 处理页面右边的css样式 */
+#mainbody_right{
+	display: table-cell;
+	vertical-align: top;
+	padding-top: 110px;
+	width:810px;
+	position: relative;
+}
+#write_blog{
+	position:absolute;
+	top:130px;
+	right:20px;
+}
+#navgitor_level_two{
+	
+	height:45px;
+	width:455px;
+}
+#navgitor_level_two ul li a{
+	height:45px ;
+	width:90px;
+	text-align: center;
+	font-size:18px;
+	font-weight:bold;
+	float:left;
+	padding-top: 12px;
+}
+#navgitor_level_two ul li a:LINK,#navgitor_level_two ul li a:VISITED{
+	color:#5B5D61;
+	text-decoration: none;
+}
+#navgitor_level_two ul li a:HOVER{
+	color:#F29E50;
+	text-decoration: none;
+	background-color: #EBEEF5;
+}
+#home{
+	background-color: #EBEEF5;
+}
+#search_article{
+	float:right;
+	width:100%;
+	padding:5px 0px;
+	background-color: #FFFFFF;
+}
+#search_article input{
+	float:right;
+}
+#search_article input[type=text]{
+	width:140px;
+	height:20px;
+}
+#search_article input[type=image]{
+	margin-right:20px;
+}
+/* -----------------------显示文章的模块--------------------------- */
+#baseinfo{
+	height:60px;
+	padding-left:13px;
+}
+#baseinfo h2{
+	font-size:28px;
+	color:#FFFFFF;
+	text-shadow: 5px 5px 10px black;
+}
+#baseinfo p{
+	font-size:18px;
+	color:#E2E6E9;
+	text-shadow:3px 3px 5px #5B5D61;
+}
+#show_article{
+	display: tabe;
+	border-spacing: 0px 5px;
+	clear:right;
+	padding-top:5px;
+	width:810px;
+}
+.show_article_row{
+	display: table-row;
+	background-color:#FFFFFF;
+}
+.article_author{
+	display: table-cell;
+	padding-top:10px;
+	vertical-align: top;
+	padding-left:8px;
+	text-align: center;
+}
+.article_show{
+	display: table_cell;
+	width:698px;
+	padding-top:10px;
+	vertical-align: top;
+	font-family:"宋体";
+	padding-left:20px;
+	padding-right:20px;
+	line-height: 2em;
+}
+.article_content{
+	
+	width:640px;
+}
+#fenye{
+	float:right;
+	background-color:#EBEEF5;
+	padding-right:20px;padding-top:20px;padding-bottom:10px;
+	text-align: center;
+}
+#fenye a:LINK,#fenye a:VISITED{
+	color:#000000;
+}
+#fenye a:HOVER{
+	color:#F29E50;
+	text-decoration: none;
+}
+.article_author_image{
+	width: 60px;
+	height: 60px;
+	border-bottom:3px  dotted #3B5999;
+	border-right:3px  dotted #3B5999;
+	border-radius: 30px;
+	
+}
+.article_operator{
+	float:right;
+	width:52px;
+}
+.show_article_operator{
+	display: none;
+	border:1px solid #D4D0C8;
+	background-color:#FFFFFF;
+	margin:0px;
+	padding:0px;
+	clear:right;
+	text-align: center;
+	z-index: 10;
+	
+}
+.show_article_operator ul li{
+	display: list-item;
+	height:25px;width:50px;
+}
+.show_article_operator ul li:HOVER{
+	cursor:default;
+	background-color:#EBEEF5;
+}
+
+.arrow_down{
+	cursor: pointer;
+	display: block;
+	border:1px solid #EBEEF5;
+	float:right;	
+}
+.article_command{
+	/* float:right; */
+	margin-top:50px;
+	margin-right:20px;
+	/* border:1px solid red; */
+	width:100%;
+	background-image: url("../image/blog/article_underline.gif");
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.command_class , .praise{
+	float:right;
+	margin-right:10px;
+	margin-top:10px;
+	cursor: pointer;
+	color:#999999;
+}
+.praise:HOVER,.command_class:HOVER{ color:#F29E50; text-decoration: underline;}
+
+.author_name_class{
+	font-size:13px;
+	color:#747474;
+	font-weight:bold;
+}
+#show_article h2 a:VISITED,#show_article h2 a:LINK{
+	color:#5B5D61;
+	text-decoration: none;
+}
+#show_article h2 a:HOVER{
+	color:#F29E50;
+	text-decoration: none;
+}
+/* ----------------------------------end------------------------------------------- */
+
+/* 主题页面的左边内容 */
+#mainbody_left{
+	display: table-cell;
+	vertical-align:top;
+	/* padding-left:28px; */
+	width:200px;
+}
+/* --------------------------头像-------------------------- */
+#touxiang img{
+	/* border-bottom: 4px solid #42464A;
+	border-right: 4px solid #42464A; */
+	border : 3px solid #FFFFFF;
+	margin-left:28px;
+} 
+
+
+/* ----------------------博客文章管理的板块--------------------------- */
+
+#blog_manager{
+	margin-top:30px; margin-right:10px;
+	background:#FFFFFF url("../image/blog/titil_bg.png") repeat-x top;
+	padding-bottom: 5px;
+}
+
+#blog_manager h2{
+	color:#717EAD;
+	font-size:18px;
+	padding : 3px 0px 10px 3px;
+}
+
+#blog_manager ul li a{
+	color:#505456;
+	width:162px;  height:24px;
+	display: block;
+	padding-top:10px; padding-left:30px;
+	font-size:14px;
+	background-image: url("../image/blog/blog_icon.png"),url("../image/blog/article_manager_underline.png");
+	background-repeat: no-repeat,no-repeat;
+	background-position: 5% 50%,40% 100%;
+	/* text-decoration: underline; */
+}
+#blog_manager ul li a:HOVER{
+	background-color: #EBEEF5;
+	text-decoration: none;
+	color:#F29E50;
+	font-weight:bold;
+}
+
+
+
+
+/* -------------------------搜索文章模块----------------------- */
+#search_article_topic{
+	margin-top:10px; margin-right:10px;
+	background:#FFFFFF url("../image/blog/titil_bg.png") repeat-x top;
+	padding-bottom: 10px;
+}
+#search_article_topic h2{
+	color:#717EAD;
+	font-size:18px;
+	padding : 3px 0px 25px 3px;
+}
+
+#search_article_topic input[type=image]{
+	float:right;
+	margin-right:10px;
+	/* border:1px solid #D4D0C8; */
+}
+#search_article_topic input[type=text]{
+	height:20px;
+	width:140px;
+	margin-left:10px;
+}
+
+/* ----------------特色文章推荐模块--------------------- */
+
+#characteristic_article{
+	margin-top:10px; margin-right:10px;
+	background:#FFFFFF url("../image/blog/titil_bg.png") repeat-x top;
+	/* padding-bottom: 10px; */
+}
+#characteristic_article h2{
+	color:#717EAD;
+	font-size:18px;
+	padding : 3px 0px 0px 3px;
+	margin-bottom:25px;
+}
+.article_tile_span{
+	font-size:14px;
+	font-weight:bold;
+}
+#characteristic_article p{
+	color:#666666;
+}
+
+.characteristic_article_table_row{
+	
+	padding:10px 5px;
+	line-height: 1.4em;
+	background:#FFFFFF url("../image/blog/select_icon.gif") repeat-x bottom;
+}
+
+
+/* 处理页面的最靠边的样式 */
+#sidebar{
+	display: table-cell;
+	vertical-align: top;
+	width:190px;
+}
+#sidebar h3{
+	margin-left:20px; margin-top:10px;
+	color:#0E3D67;
+	/* font-family: cursive; */
+	font-weight:bold;
+	font-size:16px;
+}
+#time_axis{
+	margin-left:20px;
+	background: #EBEEF5 url("../image/blog/time_axis.png") repeat-y left; 
+	font-weight:bold;
+	color:#7E8791;
+	height:180px;
+}
+.first_time_axis{
+	background: #EBEEF5 url("../image/blog/time_axis_select.png") no-repeat left; 
+	margin-bottom: -5px;
+}
+#time_axis ul li {
+	display: list-item;
+	width:120px;
+	height:22px;
+	padding-left:10px;
+	margin-top:5px;
+}
+#time_axis ul li:HOVER{
+	background: #EBEEF5 url("../image/blog/time_axis_select.png") no-repeat left; 
+	color:#F29E50;
+}
+
+
+
+/* 处理尾部的内容的结构 */
+#footer {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	/* border:1px solid red; */
+	background-color: #3B5999;
+}

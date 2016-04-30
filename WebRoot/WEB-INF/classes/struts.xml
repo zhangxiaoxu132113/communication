@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<!-- 修改访问链接的后缀名 -->
+	<constant name="struts.action.extension" value="do"/>
+	<!-- 设置开发模式，开发时输出更多的错误信息 -->
+	<constant name="struts.devMode" value="true"/>
+	<!-- 修改ui主题为简单主题 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 上传文件大小的限制 -->
+	<constant name="struts.multipart.maxSize" value="2073741824"/>
+	
+	<package name="system" namespace="/system" extends="struts-default">
+		<!-- 测试action -->
+		<action name="textAction_*" class="textAction" method="{1}">
+			<result name="success">/WEB-INF/page/text.jsp</result>
+		</action>
+		<!-- 用户注册 -->
+		<action name="reigsterAction_*" class="registerAction" method="{1}">
+			<result name="tipInfo">/WEB-INF/page/tipInfo.jsp</result>
+		</action>
+		<!-- 用户登录 -->
+		<action name="loginAction_*" class="loginAction" method="{1}">
+			<result name="home" >/WEB-INF/page/home.jsp</result>
+			<result name="login">/WEB-INF/page/login.jsp</result>
+		</action>
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="editInfo">/WEB-INF/page/editUserInfo.jsp</result>
+			<result name="home">/WEB-INF/page/home.jsp</result>
+			<result name="login">/WEB-INF/page/login.jsp</result>
+			<result name="returnHome">/WEB-INF/page/home.jsp</result>
+			<result name="friendHome">/WEB-INF/page/personalHome.jsp</result>
+		</action>
+		<action name="searchAction_*" class="searchAction" method="{1}">
+			
+		</action>
+		<!-- 图片上传 -->
+		<action name="photoUpload" class="photoUpload" >
+			<result name="success" type="chain">
+				<param name="namespace">/system</param>
+				<param name="actionName">userAction_editInfoUI</param>
+			</result>
+			<!-- 配置fileUpload拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传文件类型 -->
+				<!-- <param name="allowedTypes">application/octet-stream</param> -->
+				<param name="allowedTypes">image/bmp,image/jpeg,image/gif,image/png,image/pjpeg</param>
+				<!-- 配置允许上传文件大小最大值 -->
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<!-- FCKedtor图片上传 -->
+		<action name="userArticleFileUpload" class="userArticleFileUpload">
+		
+		</action>
+	</package>
+	<!-- 博客系统模块 -->
+	<package name="blog" namespace="/blog" extends="struts-default">
+		<action name="blogAction_*" class="blogAction" method="{1}">
+			<result name="home">/WEB-INF/page/blogindex.jsp</result>
+			<result name="returnHome" type="redirectAction">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogAction_home</param>
+			</result>
+			<result name="writeBlogUI">/WEB-INF/page/writeBlog.jsp</result>
+			<result name="photoUI">/WEB-INF/page/blogphoto.jsp</result>
+			<result name="article">/WEB-INF/page/showArticle.jsp</result>
+			<result name="edit">/WEB-INF/page/editArticle.jsp</result>
+		</action>
+		<action name="albumAction_*" class="albumAction" method="{1}">
+			<result name="photoUI" type="chain">
+				<param name="namespace">/blog</param>
+				<param name="actionName">blogAction_photoUI</param>
+			</result>
+			<result name="showAllPhoto">/WEB-INF/page/showPhoto.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="namespace">/blog</param>
+				<param name="actionName">albumAction_showAlbum?album_id=${album_id }</param>
+			</result>
+			<!-- 配置fileUpload拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传文件类型 -->
+				<!-- <param name="allowedTypes">application/octet-stream</param> -->
+				<param name="allowedTypes">image/bmp,image/jpeg,image/gif,image/png,image/pjpeg</param>
+				<!-- 配置允许上传文件大小最大值 -->
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="photoAction_*" class="photoAction" method="{1}">
+			<!-- 配置fileUpload拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传文件类型 -->
+				<!-- <param name="allowedTypes">application/octet-stream</param> -->
+				<param name="allowedTypes">image/bmp,image/jpeg,image/gif,image/png,image/pjpeg</param>
+				<!-- 配置允许上传文件大小最大值 -->
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="redirectAction">
+				<param name="namespace">/blog</param>
+				<param name="actionName">albumAction_showAlbum</param>
+			</result>
+		</action>
+	</package>
+	
+	
+	
+</struts>

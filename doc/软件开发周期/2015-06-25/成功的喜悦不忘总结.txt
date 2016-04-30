@@ -1,0 +1,17 @@
+1,hibernate的一对多的关联保存的操作
+
+多的一方【Article】
+	private Set<Attach> attaches = new HashSet<Attach>();
+	setter...getter..
+	<!-- inverse=false说明关系由attaches这一方来维护关系 -->
+    <set name="attaches" cascade="all" inverse="true" >
+    	<!-- 确定关联的外键列 -->
+    	<key column="article_id" />
+    	<one-to-many class="cn.water.cf.domain.Attach"/>
+    </set>
+一的一方【Attach】
+	private Attach attach;
+	<many-to-one name="article_id" column="article_id" class="cn.water.cf.domain.Article"/>
+	
+	
+	

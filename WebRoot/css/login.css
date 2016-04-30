@@ -1,0 +1,254 @@
+body {
+	padding: 0px;
+	margin: 0px;;
+}
+@-webkit-keyframes gogogo {
+    0%{
+	    background-image: url("../image/login/login_bg2.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size:100% ,100%;
+    }
+    50%{
+        background-image: url("../image/login/login_bg1.jpg");
+		/* background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size:100% ,100%; */
+    }
+    100%{
+        background-image: url("../image/login/2.jpg");
+		/* background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size:100% ,100%; */
+    }
+
+}
+#container {
+	padding: 0px;
+	margin: 0px;
+	background-image: url("../image/login/login_bg2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size:100% ,100%;
+	/* -webkit-animation-delay: 2.5s; */
+	/* -webkit-animation:gogogo 15s infinite linear ;  */
+}
+
+#header {
+	margin: 0px;
+	padding: 0px;
+	height: 88px;
+	background: url("../image/login/bg_bar1.png") repeat-x rgba(255, 255, 255, 0.95);
+	display: block;
+	width: 100%;
+	top: 0%;
+	position: fixed;
+	/* 总结：
+	filter:alpha(opacity=50); opacity:0.5;
+	使用是不可取的，因为设置它的同时，不仅仅背景会变得透明，同时该层的上面的元素也会透明化。 */
+}
+
+#logo {
+	float: left;
+}
+
+#logo h1 {
+	font-size: 32px;
+	font-weight: bolder;
+	color: #222013;
+	padding-left: 40px;
+	font-family: Arial, Helvetica, Sans-Serif;
+	text-shadow: 1px 1px 0px #DAD1BD;
+}
+
+#login {
+	margin-top: 1px;
+	width: 64px;
+	height: 24px;
+	background-color: #3E698D;
+	color: #fff;
+	text-shadow: 1 2 2 #000; border : 0px;
+	border-radius: 3px;
+}
+
+#login_form {
+	width: 480px;
+	height: 60px;
+	float: right;
+	padding-top: 25px;
+	margin-top: 0px;
+	font-size: 14px;
+}
+
+.input_info {
+	float: left;
+	margin-right: 21px;
+	margin-bottom: 0px;
+	width: auto;
+	color: #6F6D75;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1.7em;
+}
+
+.input_info input[type="text"] {
+	height: 24px;
+	width: 166px;
+	margin-bottom: 5px;
+	color:#222;
+}
+
+.input_info input[type="password"] {
+	height: 24px;
+	width: 166px;
+	margin-bottom: 5px;
+}
+
+.input_info a:link {
+	color: #6F6D75;
+}
+
+.color_theme1 {
+	color: #6C82A6;
+}
+
+#main {
+	margin: 88px 0px 0px 0px;
+	padding-left: 100px;
+	display: block;
+}
+/* 介绍本网站的，欢迎用户使用该网站 */
+#show_intro {
+	float: left;
+	font-weight: bolder;
+	margin-top: 52px;
+	font-family: inherit;
+	color: #fff;
+}
+
+#show_intro h2 {
+	font-size: 36px;
+}
+
+#show_intro p {
+	font-size: 20px;
+	line-height: 2em;
+	font-weight: lighter;
+}
+
+#register_form {
+	background-color: rgba(255, 255, 255, 0.85);
+	border-radius: 10px;
+	display: block;
+	float: right;
+	margin-right: 80px;
+	margin-top: 30px;
+	width: 350px;
+	padding-top: 45px;
+	padding-left: 45px;
+	padding-bottom: 40px;
+	line-height: 3em;
+	color: #002452;
+	font-size: 14px;
+	font-weight: bold;
+	display: block;
+}
+
+#dis_table {
+	display: table;
+	border-spacing: 0;
+}
+
+.dis_row {
+	display: table-row;
+}
+
+.dis_cell {
+	display: table-cell;
+	padding-right: 12px;
+}
+
+#register_form input[type=text] input[type=password] {
+	width: 200px;
+	height: 20px;
+	font-size: 8px;
+	/* margin-right:100px; */
+	/* line-height: 3em; */
+}
+
+#register_form input[type=text] {
+	width: 220px;
+	height: 26px;
+}
+
+#register_form input[type=password] {
+	width: 220px;
+	height: 26px;
+}
+
+#register_form h1 {
+	color: #002452;
+	font-size: 32px;
+	font-weight: bolder;
+	line-height: 0.4em;
+}
+
+#register_form h2 {
+	color: #6F6D75;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 3em;
+}
+
+#register_form p {
+	color: #9A9DA5;
+	font-size: 12px;
+	line-height: 1.2em;
+	margin-top: 20px;
+}
+
+#register_form input[type=image] {
+	margin-top: 15px;
+}
+
+.color_theme2 {
+	color: #506A8A;
+}
+/* 处理页面结尾部分 */
+#footer {
+	clear: left; margin-top:20px;
+	text-align: center;
+	height: 85px;
+}
+
+#footer p {
+	padding-top: 8px;
+	font-size: 14px;
+	line-height: 1em;
+	text-align: center;
+	color: #E7ECF2;
+}
+
+input[type="text"],input[type="password"] {
+	padding-left: 5px;
+	border-radius: 3px;
+	border: 1px #94907B solid;
+}
+
+.clear {
+	clear: both;
+}
+
+#footer a:link {
+	color: #fff;
+	text-decoration: none;
+}
+
+
+
+
+

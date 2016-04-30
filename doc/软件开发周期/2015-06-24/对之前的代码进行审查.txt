@@ -1,0 +1,8 @@
+1-userAction_editInfoUI
+	在写这个方法的时候，要跳转到用户完善资料的页面，这时候必须要到数据库中查找到用户的id，应该，当用户注册成功的时候，
+	这个id的字段的值是从服务器端生成的，所以即使在注册的时候，将user对象添加到了session中，我们也是没有办法获取得到
+	user的id字段的值的
+	然而，疑问的是SessionUtil.removeGlobelUser(request);这行代码有必要添加吗？
+	在userAction_editUserInfo()的方法中，也差不多是这样实现的
+
+

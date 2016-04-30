@@ -1,0 +1,9 @@
+方法一
+<img id="img_<s:property value="#article_id.article_id"/>" alt="down image" src="${pageContext.request.contextPath }/image/blog/arrow_down.png" class="arrow_down" onclick="show_arrow_down(this);" />
+使用id来获取，不过id是动态生成的，
+所以在获取id的时候，通过
+onclick="show_arrow_down(this);
+这个方法来获取id的值
+方法二，
+灵活使用javascript获取节点
+var nextElement = thisValue.nextElementSibling;

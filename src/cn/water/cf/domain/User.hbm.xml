@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class table="t_user" name="cn.water.cf.domain.User">
+		<id name="id" column="id" type="java.lang.String">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="userName" type="java.lang.String">
+			<column name="userName" />
+		</property>
+		<property name="realName" type="java.lang.String">
+			<column name="realName" ></column>
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" ></column>
+		</property>
+		<property name="gender" type="java.lang.Integer">
+			<column name="gender" ></column>
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="status" ></column>
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" ></column>
+		</property>
+		<property name="qq" type="java.lang.Integer">
+			<column name="qq" ></column>
+		</property>
+		<property name="isJoinCommunity" type="java.lang.Integer">
+			<column name="isJoinCommunity" ></column>
+		</property>
+		<property name="communityId" type="java.lang.Integer">
+			<column name="communityId" ></column>
+		</property>
+		<property name="birthday" type="java.util.Date">
+			<column name="birthday" ></column>
+		</property>
+		<property name="placeOfOrigin" type="java.lang.String">
+			<column name="placeOfOrigin" ></column>
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="address" ></column>
+		</property>
+		<property name="hightSchool" type="java.lang.String">
+			<column name="hightSchool" ></column>
+		</property>
+		<property name="university" type="java.lang.String">
+			<column name="university" ></column>
+		</property>
+		<property name="profile" type="java.lang.String">
+			<column name="profile" ></column>
+		</property>
+		<property name="experience" type="java.lang.String">
+			<column name="experience" ></column>
+		</property>
+		<property name="blogInfo" type="java.lang.Integer">
+			<column name="blogInfo" ></column>
+		</property>
+		<property name="headImage" type="java.lang.String">
+			<column name="headImage" ></column>
+		</property>
+		<property name="questionOne" type="java.lang.String">
+			<column name="questionOne" ></column>
+		</property>
+		<property name="answerOne" type="java.lang.String">
+			<column name="answerOne" ></column>
+		</property>
+		<property name="questionTwo" type="java.lang.String">
+			<column name="questionTwo" ></column>
+		</property>
+		<property name="answerTwo" type="java.lang.String">
+			<column name="answerTwo" ></column>
+		</property>
+		
+	</class>
+	
+</hibernate-mapping>

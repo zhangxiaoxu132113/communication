@@ -1,0 +1,449 @@
+*{
+	margin:0px;
+	padding:0px;
+	
+}
+body{
+	background-image: url("../image/bar.png"),url("../image/personhome/footer_bg.png");
+	background-repeat: repeat-x,repeat-x;
+	background-position: top,bottom;
+	background-color: #EBEEF5;
+	
+	font-size:12px;
+	
+}
+
+#container{
+	
+	width:1010px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 0px;
+}
+
+/* 左边的内容 */
+#left_body{
+	
+	width:215px;
+	float:left;
+	margin-bottom: 10px;
+	/* padding-bottom: 40px; */
+}
+#left_body h1{
+	
+	margin-top:38px;
+	text-shadow: 2px 2px 0px #000;
+	font-size: 32px;
+	font-weight: bolder;
+	color:#F3F3FE;
+	/* padding-left: 40px; */
+	font-family: Arial, Helvetica, Sans-Serif;
+	
+}
+#attch_info{
+	
+	background-image: url("../image/personhome/attch_bg.png");
+	background-repeat: repeat-x;
+	margin-top:5px;
+	padding-top:20px;
+	padding-left:10px;
+}
+#attch_info h3{
+	font-size:17px;
+	color:#747474;
+	font-weight: bolder;
+	font-family: cursive;
+	line-height: 1.8em;
+	
+}
+#attch_info p{
+	
+	font-size:14px;
+	line-height: 1.2em;
+	font-family: "黑体";
+	font-weight:bolder;
+	color:#8F8F8F;
+	margin-bottom: 10px;
+	
+}
+#attch_info input[type=text] {
+	padding-left:8px;
+	width:130px;
+	height:20px;
+	color:#989898;
+	/* border-bottom-color: #989898; */
+	border-top:1.4px solid #989898;
+}
+#attch_info ul {
+	
+}
+#more_info{
+	padding-top:17px;
+	padding-bottom:17px;
+	line-height: 1.5em;
+}
+.userName{
+	
+	color:rgba(235,86,73,1.0);
+}
+.font_1{
+	padding-left:3px;
+	color:#97A3BD;
+	font-size:15px;
+	font-family: monospace;
+	font-weight: bolder;
+	/* margin-bottom: 10px; */
+	
+}
+
+#adv_info{
+	
+	background-color: #FEFEFE;
+	padding-bottom: 25px;
+}
+#adv_info img{
+	text-align: center;
+	margin-left: 8px;
+	width:144px;
+	height:194px;
+}
+
+
+/* ----------------------------end------------------------------- */
+/* 处理右边内容的样式 */
+#right_body{
+	
+	width:788px;
+	float:	right;
+	/* margin-bottom: 10px; */
+	padding-bottom:10px;
+	height:auto;
+}
+#header{
+	
+	width:780px;
+}
+
+#p_system{
+	float:right;
+	width:340px;
+	height:65px;
+	
+	/* -webkit-transition: background-color 1s ease-in-out 0s, color 10s
+		ease-in-out 10s;
+	-moz-transition: background-color 1s ease-in-out 0s, color 10s
+		ease-in-out 10s; */
+}
+
+#p_system ul li{
+	float:left;
+	margin-right:14px;
+	
+}
+/* #p_system ul li:hover{
+	
+	color:#00ff00;
+	background-color:#000000;
+} */
+#p_navigator {
+	
+	flaot:left;
+	width:450px;
+	height:65px;
+	boder:1px solid red;
+}
+#p_navigator ul{
+	
+	padding-top: 32px;
+	
+}
+ #p_system ul{
+	padding-top: 32px;
+	padding-left:90px;
+	font-size:14px;
+	font-family:monospace;
+	font-weight:bolder;
+	color:#8FA6D9;
+	
+}
+#p_navigator ul li {
+	float:left;
+	margin-right:24px;
+	font-family: monospace;
+	font-size:18px;
+	font-weight:bolder;
+	color:#EBEEF5;
+}
+
+
+
+
+/* ------------------end-------------------- */
+
+/* 主体内容 */
+#main_body {
+	background-image: url("../image/personhome/main_bg.png");
+	background-repeat: repeat-x;	
+	background-color:#FFFFFF;
+	height:680px;
+}
+
+#main_left{
+	/* border:1px solid red; */
+	width:240px;
+	float:left;
+	padding-left:20px;
+}
+#head_image{
+	padding-top: 20px;
+	/* padding-left:20px; */
+	
+}
+#head_image img{
+	width:204px;
+	height:227px;
+	border:2px dotted white;
+}
+
+#contactme {
+	padding-top:15px;
+	/* text-decoration: underline; */
+}
+#contactme p{
+	font-size:14px;
+	font-weight: bolder;
+	font-family: monospace;
+	line-height: 1.6em;
+	/* background-image: url("../image/personhome/line.png");
+	background-repeat: no-repeat;
+	background-position: bottom; */
+	border-bottom: 1px dotted #5F5F5F;
+	margin-right:32px;
+	
+}
+
+#add_friend h3{
+	
+	color:#717E9C;
+	font-size:15px;
+	font-family: cursive;
+	background-image: url("../image/personhome/mutual_frineds.png");
+	margin-top: 10px;
+	margin-right:34px;
+}
+
+
+/* #main_right{
+	border:1px solid red;
+	width:500px;
+	float:right;
+} */
+#base_info{
+	/* 	width:540px; */
+	padding-top: 25px;
+	margin-left:10px;
+	margin-bottom:0px;
+}
+#base_info h3{
+	font-size:16px;
+	font-weight: bolder;
+	font-family: monospace;
+	color:#5F5F5F;
+	padding-bottom: 8px;
+}
+#base_info p{
+	/* font-size:14px;
+	font-weight: bolder;
+	font-family: sans-serif;
+	color:#AFAFAF; */
+	/* padding-left:8px; */
+	margin-bottom: 15px;
+	/* margin-left:10px; */
+}
+#base_textinfo{
+	
+	display: table;
+	border-spacing: 2px;
+	/* vertical-align: */ 
+}
+.base_row{
+	display: table-row;
+	padding: 0px 5px;
+	margin:0px;
+}
+.class_info{
+	display: table-cell;
+	vertical-align: center;
+}
+.class_myinfo{
+	display:table-cell;
+	vertical-align: center;
+	padding-left:10px;
+}
+.introduce{
+	color:#8F8F8F;
+	font-size:14px;
+	font-weight: bolder;
+	font-family: sans-serif;
+	line-height: 1.3em;
+}
+
+.class_info{
+	color:#8F8F8F;
+	font-size:14px;
+	font-weight: bolder;
+	font-family: sans-serif;
+	line-height: 1.3em;
+}
+.class_myinfo{
+	color:#797E95;
+	font-size:14px;
+	font-weight: bolder;
+	font-family: sans-serif;
+	line-height: 1.3em;
+	/* margin-left:50px; */
+}
+#experience{
+	display: table;
+	border-spacing: 2px;
+}
+#experience p{
+	/* text-decoration: underline; */
+	/* border-bottom: 3px dotted #5F5F5F; */
+	margin-right:26px;
+	margin-left:254px;
+	line-height: 1.6em;
+	display: table-row;
+}
+.del_img{
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 4px;
+	display: table-cell;
+	vertical-align: middle;
+}
+.font_2{
+	font-size:14px;
+	font-weight: bolder;
+	font-family: monospace;
+	padding-bottom: 4px;
+	color:#97A4B7;
+	display: table-cell;
+	vertical-align: middle;
+}
+.cell{
+	display: table-cell;
+	vertical-align: middle;
+}
+#information h2{
+	color:#717E9C;
+	font-size:15px;
+	font-family: cursive;
+	background-image: url("../image/personhome/mutual_frineds.png");
+	margin-top: 10px;
+	margin-right:26px;
+	margin-left:254px;
+}
+#information h3{
+	color:#686868;
+	font-size:14px;
+	font-weight: bolder;
+	font-family: cursive;
+	margin-top:10px;
+	padding-top: 0px;
+}
+#information p{
+	
+	color:#969DA7;
+	font-size:13px;
+	font-weight: bolder;
+	font-family: sans-serif;
+	line-height: 1.4em;
+	float:right;
+	width:364px;
+	margin:26px;
+	margin-top:0px;
+	padding-right:5px;
+}
+#information p:FIRST-LETTER{
+	font-size: 1.3em;
+}
+#friend_count{
+	color:#949BA5;
+	font-size:14px;
+	font-weight:bolder;
+	font-family: cursive;
+	margin-top:5px;
+	margin-bottom: 5px;
+}
+#friends img{
+	width:88px;
+	height:65px;
+	
+}
+.friend{
+	
+	text-align: enter;
+	float:left;
+	margin-right:7px;
+	margin-left:7px;
+}
+.friend_name{
+	text-align: center;
+	color:#949BA5;
+	font-size:13px;
+	font-weight:bolder;
+	font-family: cursive;
+}
+
+/* ------------------end--------------------- */
+/* 处理尾部的样式 */
+#footer{
+	clear: right;
+	padding-top:15px;
+	padding-bottom:20px;
+	text-align: center;
+	background-color: #3B5999;
+	color:#6A9EC3;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+
+
+
+
+
+ul li{
+	
+	list-style: none;
+	
+}
+#contactme a {
+	color:#A6AFBD;
+	text-decoration:none;
+}
+
+#attch_info a:VISITED {
+	color:#89889A;
+	text-decoration: none;
+}
+#attch_info a:LINK {
+	color:#89889A;
+	text-decoration: none;
+}
+#attch_info a:HOVER {
+	color:#3B5999;
+	text-decoration: underline;
+}
+
+
+
+#header a:LINK , a:VISITED {
+	color:#F3F3FE;
+	text-decoration:none;
+}
+#header a:HOVER {
+	color:#A1B2C3;
+	text-decoreation:underline;
+}

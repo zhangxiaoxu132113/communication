@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class table="t_friendships" name="cn.water.cf.domain.sns.Friendships">
+		<!-- private Long id;		//好友关系表的id主键
+		private User userId;	//用户的id主键
+		private User friendId;	//好友的id主键 -->
+		<id name="id" column="id" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+		<!-- <one-to-one name="userId" class="cn.water.cf.domain.User"  />
+		<one-to-one name="friendId" class="cn.water.cf.domain.User" /> -->
+		<!-- <many-to-one name="userId" class="cn.water.cf.domain.User" >
+			<column name="userId" unique="true"></column>
+		</many-to-one> -->
+		<property name="userId" type="java.lang.String">
+			<column name="userId"></column>
+		</property>
+		<many-to-one name="friendId" class="cn.water.cf.domain.User" >
+			<column name="friendId" unique="true"></column>
+		</many-to-one>
+	</class>
+	
+</hibernate-mapping>

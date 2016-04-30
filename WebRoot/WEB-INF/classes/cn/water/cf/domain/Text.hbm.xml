@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class table="t_text" name="cn.water.cf.domain.Text">
+		<id name="id" column="id" type="java.lang.String">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="testName" type="java.lang.String">
+			<column name="testName" sql-type="varchar(20)"/>
+		</property>
+		<property name="testDate" type="java.util.Date">
+			<column name="testDate" sql-type="datetime"/>
+		</property>
+		<property name="testRemark" type="java.lang.String">
+			<column name="testRemark" sql-type="varchar(100)"/>
+		</property>
+	</class>
+	
+</hibernate-mapping>

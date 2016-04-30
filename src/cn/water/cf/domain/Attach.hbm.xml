@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class table="t_attach" name="cn.water.cf.domain.Attach">
+		<id name="attach_id" column="attach_id" type="java.lang.Integer">
+			<generator class="native"></generator>
+		</id>
+		<property name="attacheName" type="java.lang.String">
+			<column name="attacheName" />
+		</property>
+		<property name="location" type="java.lang.String">
+			<column name="location"/>
+		</property>
+		<!-- <many-to-one name="article_id" column="article_id" not-null="false"
+					 outer-join="auto" 
+                     update="true" 
+                     insert="true" 
+                     access="property"
+		/> -->
+		<many-to-one name="article_id" column="article_id" class="cn.water.cf.domain.Article"/>
+	</class>
+	
+</hibernate-mapping>

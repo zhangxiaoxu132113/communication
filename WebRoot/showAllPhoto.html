@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>show all Photo</title>
+		<meta charset="UTF-8">
+		<link rel="styleSheet" type="text/css" href="css/writeBlog.css">
+		<style type="text/css">
+			#showHead {
+				width:900px;
+				margin:10px auto 0px;
+			}
+			#headImage{
+				float:left;
+				border:3px solid #ffffff;
+			}
+			#nav{
+				float:left;
+				padding-top: 100px;
+				padding-left: 20px;
+				display: block;
+			}
+			#nav h2{
+				font-size:22px;
+				color:#103667;
+			}
+			#nav ul{
+				width:530px;
+			}
+			#nav ul li{
+				width:100px;height:25px;
+				display:inline-block;
+				margin:0px;
+				padding-top:7px;
+				text-align: center;
+				font-size:16px; font-weight:bold;
+			}
+			#nav ul li a{
+				display:block;
+				width:110px;height:25px;
+			}
+			#nav a:HOVER {
+				background-color:#ffffff;
+			}
+		</style>
+		<script  src=""></script>
+		
+	</head>
+	<body>
+		<div id="header">
+				<!-- 一级导航栏 -->
+				<div id="navgitor_level_one">
+					<ul>
+						<li><a href="#"><img alt="image" src="${pageContext.request.contextPath }/${globle_user.headImage}" width="22" height="22" ></a></li>
+						<li class="navgitor_level_one_text"><a href="#">center</a></li>
+						<li><a href="#"><img alt="image" src="${pageContext.request.contextPath }/image/blog/groupfriend.jpg" width="22" height="22"></a></li>
+						<li class="navgitor_level_one_text"><a href="#">group</a></li>
+						<li><a href="#"><img alt="image" src="${pageContext.request.contextPath }/image/blog/personal.jpg" width="22" height="22"></a></li>
+						<li class="navgitor_level_one_text"><a href="#">message</a></li>
+						<li><a href="#"><img alt="image" src="${pageContext.request.contextPath }/image/blog/groupfriend.jpg" width="22" height="22"></a></li>
+						<li class="navgitor_level_one_text"><a href="#">logout</a></li>
+					</ul>
+				</div>
+				<div id="logo">
+					<h1>communication</h1>
+				</div>
+				<div id="search">
+					<form action="" method="post">
+						<input type="text" id="search_content" name="search_content">
+						<input type="image" name="search_bt" id="search_bt" src="${pageContext.request.contextPath }/image/blog/search_bt.gif"/>
+					</form>
+				</div>
+			</div>
+			<div id="showHead">
+				<img alt="headImage" src="image/blog/touxiang.png" id="headImage" width="140" >
+				<div id="nav">
+					<h2>Makezhakeboge</h2>
+					<ul>
+						<li><a href="">Home</a></li>
+						<li><a href="">Blog</a></li>
+						<li><a href="">Subscribe</a></li>
+						<li><a href="">Photo</a></li>
+						<li><a href="">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		
+	</body>
+</html>

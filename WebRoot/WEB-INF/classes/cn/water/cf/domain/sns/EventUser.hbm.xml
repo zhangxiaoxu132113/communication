@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class table="t_eventUser" name="cn.water.cf.domain.sns.EventUser" lazy="false">
+
+		<id name="id" column="id" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+		<many-to-one name="event_id" 
+                     class="cn.water.cf.domain.sns.Event" 
+                     cascade="none"
+                     column="event_id"
+                     not-null="true" 
+                     >
+	    </many-to-one>
+		<property name="friendsUserId" type="java.lang.String" lazy="false">
+			<column name="friendsUserId"/>
+		</property>
+		<property name="createDate" type="java.util.Date">
+			<column name="createDate" sql-type="datetime"/>
+		</property>
+	</class>
+	
+</hibernate-mapping>

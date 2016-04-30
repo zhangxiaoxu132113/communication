@@ -1,0 +1,59 @@
+[t_keyword]
+keyword_id     keywordName 
+	1			php
+	2			.net
+	3			java
+------------------------------------------------
+[t_article]
+article_id 	title	author 	keyword
+    1		think 	 john	 1,2,3
+------------------------------------------------    
+方案一：
+ 如果我们在article这个class把keyword设计为set属性的话，那么我们生成keyword表的时候，
+ keyword表需要生成一个article_id的字段，对应到article文章表。
+ 但是分析了一下，这样设计有点浪费一些keyword实体，应该有时候有一些实体是可以重复使用的，
+ 所以我打算使用第二个字段
+
+方案二：
+在article类中定义一个String类型的字段String keywords;
+然后当我们生成这个字段的值的时候，我们是以这种方式生成的  [1,2,3]这样对应到keyword表
+
+
+所以还是要区别于附件的，附件一定要有一个article_id来对应到它所属的文章表
+
+
+<set name="attaches" cascade="all" inverse="false">
+    		<!-- 确定关联的外键列 -->
+    		<key column="article_id" />
+    		<one-to-many class="cn.water.cf.domain.Attach"/>
+    	</set>
+注：如果我们把inverse设置为false说明主外键关系更新是由自己的维护的
+	Hibernate: select max(article_id) from t_article
+	Hibernate: insert into t_article (title, author, content, createDate, updateDate, accessNumber, keywords, owner, article_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)
+	Hibernate: update t_attach set attacheName=?, location=? where attach_id=?
+	Hibernate: update t_attach set attacheName=?, location=? where attach_id=?
+	Hibernate: update t_attach set article_id=? where attach_id=?
+	Hibernate: update t_attach set article_id=? where attach_id=?
+
+<set name="attaches" cascade="all" inverse="true">
+    		<!-- 确定关联的外键列 -->
+    		<key column="article_id" />
+    		<one-to-many class="cn.water.cf.domain.Attach"/>
+    	</set>
+	Hibernate: select max(article_id) from t_article
+	Hibernate: insert into t_article (title, author, content, createDate, updateDate, accessNumber, keywords, owner, article_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)
+	Hibernate: update t_attach set attacheName=?, location=? where attach_id=?
+	Hibernate: update t_attach set attacheName=?, location=? where attach_id=?
+
+
+由文章表来维护附件的关系，也就是说附件表的article_id外键是由文章表来维护
+但是在保存文章表之前一定要保存附件表
+
+所以这里就有一个关联保存的问题了，所以要到网上查找答案咯。
+
+到网上找到了这片文章
+2,通过保存主表的方式,如果将inverse设为false,JAVA代码里面可以只把子表方的对象加到主表对象的set里面,进行单向关联,
+保存主表,会产生3条SQL insert语句,2条update(update 子表)语句.做双向关联也是3条SQL insert语句,2条update(update 子表)语句.
+
+
+

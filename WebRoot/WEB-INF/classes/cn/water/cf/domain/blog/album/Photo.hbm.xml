@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class table="t_photo" name="cn.water.cf.domain.blog.album.Photo">
+		<id name="photo_id" column="photo_id" type="java.lang.Long" >
+			<generator class="native" ></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" />
+		</property>
+		<many-to-one name="album_id"
+					 class="cn.water.cf.domain.blog.album.Album"
+					 column="album_id"
+					 lazy="false"
+					 cascade="none"	
+					 not-null="false"
+					 	
+		/>
+		<property name="url" type="java.lang.String">
+			<column name="url" ></column>
+		</property>
+		<property name="user_id" type="java.lang.String">
+			<column name="user_id" ></column>
+		</property>
+		<property name="uploadDate" type="java.util.Date">
+			<column name="uploadDate" ></column>
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" ></column>
+		</property>
+		
+		
+		
+	</class>
+	
+</hibernate-mapping>

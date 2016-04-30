@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- private Long album_id;		//相册表的主键
+	private User user;			//相册所属用户的主键
+	private String albumName;	//相册的名称
+	private Date createTime;	//相册创建时间
+	private String linkAddr;	//相册的连接地址
+	private String description;	//相册的描述 -->
+
+	<class table="t_album" name="cn.water.cf.domain.blog.album.Album">
+		<id name="album_id" column="album_id" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+		<many-to-one name="user"
+				     class="cn.water.cf.domain.User"
+				     column="user_id"
+				     lazy="false"
+		/>
+		<property name="albumName" type="java.lang.String">
+			<column name="albumName"/>
+		</property>
+		<property name="createTime" type="java.util.Date">
+			<column name="createTime" sql-type="datetime"/>
+		</property>
+		<property name="type" type="java.lang.Integer">
+			<column name="type" />
+		</property>
+		<property name="linkAddr" type="java.lang.String">
+			<column name="linkAddr" />
+		</property>
+		<property name="count" type="java.lang.Integer">
+			<column name="count" />
+		</property>
+		<property name="frontCover" type="java.lang.String">
+			<column name="frontCover" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+	</class>
+	
+</hibernate-mapping>

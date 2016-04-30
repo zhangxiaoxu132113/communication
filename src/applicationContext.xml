@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		                    http://www.springframework.org/schema/context 
+		                    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		                    http://www.springframework.org/schema/tx 
+		                    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		                    http://www.springframework.org/schema/aop 
+		                    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- 1、注解的自动扫描，表示组件（如：@controler，@Service，@Repository，@Resource等）的扫描 -->
+	<context:component-scan base-package="cn.water.cf"></context:component-scan>
+	<!-- 2、C3PO数据源的配置 -->
+	
+	<!-- 3、创建由spring提供的sessionFactory，这是spring整合hibernate的核心 -->
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- note -->
+		<!-- LocalSessionFactoryBean 是如何获取而得到sessionFactory这个对象的 setDataSource获得容器注入的数据源dataSource 
+			buildSessionFactory方法通过读取配置文件属性生成的Configuration对象， 通过configuration对象的buildSessionFactory方法生成了SessionFactory对象 -->
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+		<property name="configLocation">
+			<value>
+				classpath:hibernate.cfg.xml
+			</value>
+		</property>
+	</bean>
+
+	<!--4、创建事务管理器，由spring负责创建 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	
+
+	<!-- 5、使用注解的形式管理事务 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+</beans>

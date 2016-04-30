@@ -1,0 +1,17 @@
+需要建立两张表，两个id字段都设置为索引以增加查询速度，但缺点就是插入数据会非常慢。新浪采取的是建立两张表，下面给出举例：
+
+mysql: relation.following
+• fromuid, touid, addtime
+• 关注列表：select * from following where fromuid=? order by 
+addtime desc
+• 粉丝列表：select * from following where touid=? order by 
+addtime desc
+• 问题：fromuid, touid 都为索引，插入慢
+解决：
+mysql: relation.following relation.follower
+• fromuid, touid, addtime
+• 关注列表：select * from following where fromuid=? order by 
+addtime desc
+• 粉丝列表：select * from follower where touid=? order by addtime 
+desc
+• 问题：插入两张表，非事务，一致性

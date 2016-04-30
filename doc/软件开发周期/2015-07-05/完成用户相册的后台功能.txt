@@ -1,0 +1,25 @@
+一，domain层的设计
+	1，class的设计
+	public class Photo implements Serializable{
+
+	private Long photoId;		//图片的id
+	private String name;		//图片的真实名称
+	private String url;			//图片的存放的位置
+	private Album album_id;		//所属的相册的id
+	private String user_id;		//图片所属的用户
+	private Date uploadDate;	//图片上传的日期
+	private String description;	//图片信息的描述
+	
+	public class Album implements java.io.Serializable{
+
+	private Long album_id;		//相册表的主键
+	private User user;			//相册所属用户的主键
+	private String albumName;	//相册的名称
+	private Date createTime;	//相册创建时间
+	private String linkAddr;	//相册的连接地址
+	private String description;	//相册的描述
+	
+	
+
+
+

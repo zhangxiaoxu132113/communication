@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class table="t_keyword" name="cn.water.cf.domain.KeyWord">
+		<id name="keyword_id" column="keyword_id" type="java.lang.Integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="keyWordName" type="java.lang.String">
+			<column name="keyWordName"/>
+		</property>
+		
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class table="t_event" name="cn.water.cf.domain.sns.Event" lazy="false">
+		<id name="id" column="id" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+		<many-to-one name="owner" 
+                     class="cn.water.cf.domain.User" 
+                     cascade="none"
+                     column="owner"
+                     not-null="true"
+                     lazy="false" >
+	    </many-to-one>
+		<property name="message_type" type="java.lang.String">
+			<column name="message_type"/>
+		</property>
+		<property name="createTime" type="java.util.Date">
+			<column name="createTime" sql-type="datetime"/>
+		</property>
+		<property name="eventMsg" type="java.lang.String">
+			<column name="eventMsg" />
+		</property>
+	</class>
+	
+</hibernate-mapping>

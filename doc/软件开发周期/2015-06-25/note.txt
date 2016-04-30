@@ -1,0 +1,190 @@
+用Hibernate做持久层的时候,在保存一对多关系的数据的时候,把主表端的inverse设为true,在JAVA对象里把关联做成双向,一次保存主表,效率最高.
+
+下面以往主表保存一条数据，子表保存两条数据为例： 
+
+1,通过保存主表的方式,inverse设为true,JAVA对象做双向关联,通过跟踪Hibernate的SQL,发现一共有三次insert操作.
+
+如果不将子表方关联到主表方(将子表JAVA对象加到主表的set里),子表里不会插入数据,只产生1条插入主表的SQL.
+
+如果不将主表方关联到子表方(将主表JAVA对象赋值到子表对象的对应属性),同样有三次insert操作,但是子表的外键值为空.
+
+需要设置主表的mapping文件:
+
+        <set name="detailtbs" inverse="true" lazy="true" table="DETAILTB" cascade="all-delete-orphan" fetch="select">
+            <key>
+                <column name="MID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.test.Detailtb" />
+        </set>
+
+            MasttbHome masttbHome = new MasttbHome();      
+           
+            Masttb masttb = new Masttb();
+            masttb.setMid(new BigDecimal(1));
+            masttb.setMastinfo("mastinfo");
+           
+            //如果不如下那样把主表对象关联到子表JAVA对象,子表的外键会为空
+            Detailtb detailtb1 = new Detailtb(new BigDecimal(1),masttb,"detailinfo1");
+            Detailtb detailtb2 = new Detailtb(new BigDecimal(2),masttb,"detailinfo2");
+            //如果不把子表的对象加入到主表的set里,不会插入子表数据.
+            masttb.getDetailtbs().add(detailtb1);
+            masttb.getDetailtbs().add(detailtb2);
+           
+            masttbHome.persist(masttb);
+
+2,通过保存主表的方式,如果将inverse设为false,JAVA代码里面可以只把子表方的对象加到主表对象的set里面,进行单向关联,保存主表,会产生3条SQL insert语句,2条update(update 子表)语句.做双向关联也是3条SQL insert语句,2条update(update 子表)语句.
+
+如果不将子表方关联到主表方(将子表JAVA对象加到主表的set里),子表里不会插入数据,只产生1条插入主表的SQL. 
+
+如下例3:
+
+        <set name="detailtbs" inverse="false" lazy="true" table="DETAILTB" cascade="all-delete-orphan" fetch="select">
+            <key>
+                <column name="MID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.test.Detailtb" />
+        </set>
+
+            MasttbHome masttbHome = new MasttbHome();      
+           
+            Masttb masttb = new Masttb();
+            masttb.setMid(new BigDecimal(1));
+            masttb.setMastinfo("mastinfo");
+           
+           
+            Detailtb detailtb1 = new Detailtb();
+            detailtb1.setDtid(new BigDecimal(1));
+            detailtb1.setDetailinfo("detailinfo1");
+           
+            Detailtb detailtb2 = new Detailtb();
+            detailtb2.setDtid(new BigDecimal(2));
+            detailtb2.setDetailinfo("detailinfo2");
+
+            //只将子表关联加到主表对象,主表必须 inverse="false"
+            masttb.getDetailtbs().add(detailtb1);
+            masttb.getDetailtbs().add(detailtb2);
+           
+            masttbHome.persist(masttb);
+
+ 
+
+*如果主表 inverse="true",就必须把主表关联到子表方:
+
+            detailtb1.setMasttb(masttb);
+
+            detailtb2.setMasttb(masttb);
+
+否则子表里的外键就没有被赋值.
+
+3,下面的代码是通过保存子表的方式,inverse="false",只是在多方的JAVA对象里做了关联,通过跟踪Hibernate的SQL,发现有3条SQL insert语句,1条select(select主表)语句,2条update(update子表)语句.
+
+如果是做了双向关联,,发现有3条SQL insert语句,1条select(select主表)语句,4条update(update子表)语句(由于子表cascade="save-update"的原因).
+
+如果不将主表关联到子表对象,只会往子表插入数据,如果外键定义了不能为空限制,会有异常.
+
+需要设置子表的mapping文件:
+
+        <many-to-one name="masttb" class="com.test.Masttb" cascade="save-update" fetch="join">
+            <column name="MID" precision="22" scale="0" />
+        </many-to-one>
+
+           
+            Masttb masttb = new Masttb();
+            masttb.setMid(new BigDecimal(1));
+            masttb.setMastinfo("mastinfo");
+           
+            Detailtb detailtb1 = new Detailtb(new BigDecimal(1),masttb,"detailinfo1");
+            Detailtb detailtb2 = new Detailtb(new BigDecimal(2),masttb,"detailinfo2");
+
+
+            //masttb.getDetailtbs().add(detailtb1);
+            //masttb.getDetailtbs().add(detailtb2);
+
+
+            DetailtbHome detailtbHome = new DetailtbHome();
+            detailtbHome.persist(detailtb1);
+            detailtbHome.persist(detailtb2);
+
+ 
+
+*:在用来做保存的对象对应的mapping文件必须设cascade为关联保存,如,用主表关联保存,如例1,需要在set方加上cascade为级联保存.如果是在子表,需要在子表方加上cascade为级联保存,如例3.
+
+ 
+
+inverse的作用:
+
+inverse只能用在多方(set/map/list/array/bag),推荐做法是设为true,同时在JAVA代码里面对对象进行双向关联.如上面的例子那样.
+
+4,通过保存子表的方式,inverse设为true,JAVA代码里面只把主表方的对象关联到子表方里面,进行单向关联,产生3条SQL insert语句,1条select(select主表)语句,2条update(子表)语句.
+
+如果在JAVA对象做双向关联,SQL的效果和单向一样.
+
+如果不将主表关联到子表对象,只会往子表插入数据,如果外键定义了不能为空限制,会有异常.
+
+如下例5:
+
+主表mapping:
+
+        <set name="detailtbs" inverse="true" lazy="true" table="DETAILTB" cascade="all-delete-orphan" fetch="select">
+            <key>
+                <column name="MID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.test.Detailtb" />
+        </set>
+
+子表mapping:
+
+        <many-to-one name="masttb" class="com.test.hb.Masttb"   cascade="save-update" fetch="join">
+            <column name="MTID" precision="22" scale="0" />
+        </many-to-one>
+
+JAVA代码:
+
+            tx = sessionFactory.getCurrentSession().beginTransaction();
+           
+            Masttb masttb = new Masttb();
+            masttb.setMid(new BigDecimal(1));
+            masttb.setMastinfo("mastinfo");
+            //可以只做多方做单向关联:
+            Detailtb detailtb1 = new Detailtb(new BigDecimal(1),masttb,"detailinfo1");
+            Detailtb detailtb2 = new Detailtb(new BigDecimal(2),masttb,"detailinfo2");
+
+ 
+
+            //做双向关联不会影响SQL:
+            //masttb.getDetailtbs().add(detailtb1);
+            //masttb.getDetailtbs().add(detailtb2);
+
+            DetailtbHome detailtbHome = new DetailtbHome();
+            detailtbHome.persist(detailtb1);
+            detailtbHome.persist(detailtb2);
+            tx.commit();
+
+ 
+
+总结:
+
+1,最基本的原则:
+
+如果保存主表的方式,必须将子表的对象加到主表对应的对象集合属性里.
+
+如果保存子表的方式,必须将主表的对象赋值给子表对应的对象的属性里.
+
+2,inverse=true的时候
+
+如果保存主表的方式,必须做双向关联,否则,子表的外键就会为空值.
+
+如果保存子表的方式,可以只将主表的对象赋值给子表对应的对象的属性里,但是会产生不必要的SQL操作.
+
+3,inverse=false的时候
+
+如果保存主表的方式,可以只将子表的对象加到主表对应的对象集合属性里.但是会产生不必要的SQL操作.
+
+如果保存子表的方式,可以只将主表的对象赋值给子表对应的对象的属性里,但是会产生不必要的SQL操作.
+
+ 
+
+inverse为true的意思是当hibernate探测到关联的持久化对象的关联状态发生变化的时候,按照子表的改变来更新数据库,从而避免不必要的SQl操作,子表方的cascade也会影响SQL的操作.
+
+
+最佳做法是,保存主表,在JAVA里做双向关联,inverse设为true.(一般子表的cascade设为none).

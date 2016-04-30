@@ -1,0 +1,121 @@
+分页：
+1、在util包下添加2个java文件，PageInfo.jave,PageBean.java\
+   PageBean中包括：
+    private int pageNo;    //当前页
+    private boolean firstPage;  //判断当前页是否是第一页，如果是返回true，不是返回false
+    private boolean lastPage;  //判断当前页是否是最后一页，如果是返回true，不是返回false
+    private int sumPage;     //总页数
+    private int pageSize ;   //当前页显示几条数据
+    private int totalResult ; //总记录数
+2、在script中添加page.js
+3、修改userIndex.jsp
+   (1)添加：
+    <script language="javascript" src="${pageContext.request.contextPath }/script/function.js"></script>
+    <script language="javascript" src="${pageContext.request.contextPath }/script/page.js"></script>
+    <script language="javascript" src="${pageContext.request.contextPath }/script/validate.js"></script>
+    <script language="javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
+  （2）在Form1表单中添加：
+    <s:hidden name="pageNO"></s:hidden>
+    <s:hidden name="pageSize"></s:hidden>
+    <s:hidden name="initflag" value="1"></s:hidden>
+  （3）修改“查询”按钮
+    <input style="font-size:12px; color:black; height=20;width=80" id="BT_Add" type="button" value="查询" name="BT_find" 
+       onclick="gotoquery('system/elecUserAction_home.do')">&nbsp;&nbsp;
+  （4）在From2表单中添加：
+     <!-- ly add start-->
+     <tr>
+           <td width="100%" height="1" colspan="2" >
+             <table border="0" width="100%" cellspacing="0" cellpadding="0">
+             <%PageBean pagebean=(PageBean)request.getAttribute("page");%>
+               <tr>
+                 <td width="15%" align="left">总记录数：<%=pagebean.getTotalResult() %>条</td> 
+                 <td width="14%" align="right"></td>      
+                 <%if(pagebean.getFirstPage()){ %>           
+                 <td width="8%" align="center">首页&nbsp;&nbsp;|</td>
+                 <td width="10%" align="center">上一页&nbsp;&nbsp;&nbsp;|</td>
+                 <%}else{ %>
+                 <td width="8%" align="center"><u><a href="#" onClick="gotopage('system/elecUserAction_home.do','start')">首页&nbsp;&nbsp;|</a></u></td>
+                 <td width="10%" align="center"><u><a href="#" onClick="gotopage('system/elecUserAction_home.do','prev')">上一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+                 <%} %>
+                 <%if(pagebean.getLastPage()){ %>
+        <td width="10%" align="center">下一页&nbsp;&nbsp;&nbsp;|</td>
+                 <td width="8%" align="center">末页</td>
+                 <%}else{ %>
+                 <td width="10%" align="center"><u><a href="#" onClick="gotopage('system/elecUserAction_home.do','next')">下一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+                 <td width="8%" align="center"><u><a href="#" onClick="gotopage('system/elecUserAction_home.do','end')">末页</a></u></td>
+                 <%} %>
+                 <td width="6%" align="center">第<%=pagebean.getPageNo() %>页</td>
+                 <td width="6%" align="center">共<%=pagebean.getSumPage() %>页</td>
+                 <td width="21%" align="right">至第<input size="1" type="text" name="goPage" >页
+    
+    
+    
+                 <u><a href="#" onClick="gotopage('system/elecUserAction_home.do','go')">确定</a></u></td>
+                 
+                 <td><input type="hidden" name="pageNO" value="<%=pagebean.getPageNo()%>" ></td> 
+                 <td><input type="hidden" name="prevpageNO" value="<%=(pagebean.getPageNo()-1)%>"></td>
+                 <td><input type="hidden" name="nextpageNO" value="<%=(pagebean.getPageNo()+1)%>"></td>
+                 <td><input type="hidden" name="sumPage" value="<%=pagebean.getSumPage() %>" ></td>
+                 <td><input type="hidden" name="pageSize" value="" ></td> 
+               </tr>
+             </table>       
+           </td>
+         </tr> 
+    <!-- ly add  end-->   
+4、添加userList.jsp
+   将userIndex.jsp中的内容提取出来放置到userList.jsp中
+5、修改ElecUserAction
+   /**
+   * 添加分页， 2012-9-21：begin
+   * 点击用户管理，需要retrun home，此时initflag的值是null
+   * 点击查询、上一页、...，需要return list，测试initflag的值是1
+   * */
+  String initflag = request.getParameter("initflag");
+  if(initflag!=null && initflag.equals("1")){
+   return "list";
+  }
+  /**end*/
+6、修改ElecUserServiceImpl
+   /**添加分页逻辑2012-9-21 begin*/
+  HttpServletRequest request = ServletActionContext.getRequest();
+  PageInfo pageInfo = new PageInfo(request);//处理分页
+     * 用currentPageNo用来存储当前第几页，默认是1    （分页时，从request中获取pageNO）
+     * 用pageSize用来存储当前页显示几条记录，默认是10  （分页时，从request中获取pageSize）
+     * 同时赋值request对象
+  //List<ElecUser> list = elecUserDao.findCollectionByConditionNoPage(condition, params, orderby);
+  List<ElecUser> list = elecUserDao.findCollectionByConditionWithPage(condition, params, orderby,pageInfo);
+  request.setAttribute("page",pageInfo.getPageBean());
+     * 返回PageBean
+  /**end*/
+7、修改CommonDaoImpl
+    /**添加分页：2012-9-21 begin*/
+    pageInfo.setTotalResult(query.list().size());//设置总的记录数
+     * 用totalResult存储共多少条数据
+     * 计算后用totalPage存储总记录数共分几页
+    query.setFirstResult(pageInfo.getBeginResult());//当前记录从第几条开始检索
+     * if(totalPage!=1)
+        { if(currentPageNo>=totalPage){   //表示最后1页
+           currentPageNo=totalPage;       //总页数就等于当前页
+           beginResult= (currentPageNo - 1) * pageSize;  //计算beginResult，当前页从第几条数据开始检索
+                 pageSize=totalResult-beginResult;  //计算pageSize，获取最后一页要显示的记录数
+            }else{//表示除第一页和最后一页要走的业务逻辑
+             
+             beginResult = (currentPageNo - 1) * pageSize;  //计算beginResult，当前页从第几条数据开始检索
+         }
+        }
+        if(totalPage==1) //表示只有1页
+        {
+         currentPageNo=totalPage; //将总页数赋给当前页
+         
+         beginResult=0;        //当前记录从0条开始检索
+         pageSize=totalResult; //如果只有1页，表示总的记录数就是当前页要显示的记录数
+         
+        }
+   
+     * 用beginResult用来表示当前记录从第几条开始检索
+     * 用pageSize用来表示当前页显示几条记录
+    query.setMaxResults(pageInfo.getPageSize());//每页显示几条记录
+     * 返回pageSize，表示每页显示几条数据
+    /**end*/
+
+

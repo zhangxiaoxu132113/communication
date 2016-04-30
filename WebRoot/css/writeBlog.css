@@ -1,0 +1,248 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul li {
+	list-style: none;
+	display: inline;
+}
+
+a:LINK, a:VISITED {
+	text-decoration: none;
+}
+input[type=text]{
+	width:240px;height:20px;
+	font-size:14px;
+}
+body {
+	margin: 0px;padding: 0px;
+	width:100%;height:100%;
+	background: #EBEEF5 url("../image/blog/top_bg.png") repeat-x top;
+	font: 12px Arial, Helvetica, Sans-Serif;
+}
+#container {
+	width: 900px;
+	margin: 0px auto; margin-top:40px; margin-bottom: 40px;
+	/* padding:25px; */
+	background-color:#FFFFFF;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+	border:0px;
+}
+/* 处理页眉的样式 */
+#header{
+	height:47px;
+	width:1200px;
+	margin:0px auto;
+}
+#header h1 {
+	font-size: 30px;
+	color: #F3F3FE;
+	text-shadow: 2px 2px 0px #000;
+}
+#search_content {
+	position: absolute;
+	left: 360px;
+	top: 8px;
+	width: 240px;
+	height: 21px;
+	border-top: 2px solid #223234;
+	border-left: 3px solid #223234;
+}
+
+#search_bt {
+	position: absolute;
+	top: 8px;
+	left: 608px;
+}
+#navgitor_level_one{
+	float:right;
+	height:45px;
+	width:360px;
+	border:0px;
+}
+#navgitor_level_one ul{
+	margin-left:50px;
+		margin-top:8px;
+}
+#navgitor_level_one ul li a{
+	/* width:90px; */
+	height:45px;
+	float:left;
+
+}
+.navgitor_level_one_text a{
+	margin-right:10px;
+	margin-left:5px;
+	padding-top:5px;
+}
+
+#navgitor_level_one ul li a:VISITED, #navgitor_level_one ul li a:LINK{
+	color:#F3F3FE;
+	text-decoration: none;
+}
+#navgitor_level_one ul li a:HOVER{
+	color:#F29E50;
+	text-decoration: none;
+	
+} 
+/* --------------设置页面的主体内容的css样式-------------------- */
+#container{
+	
+	width:1080px;
+	margin:10px auto 100px;
+	padding-bottom:30px;
+	background-color:#FFFFFF;
+	position: relative;
+}
+#writeblog_title{
+	
+	/* font-size:23px; */
+	font-weight:bold;
+	height:35px;
+	color:#123A66;
+/* 	background-color:#FFFFFF,;
+	background-image:url("../image/blog/titil_bg.png"),url("../image/blog/blog_icon.gif");
+	background-repeat: repeat-x,no-repeat;
+	background-position: top,left;  */
+	background:#FFFFFF url("../image/blog/titil_bg.png") repeat-x top;
+	padding-top:8px;padding-left:25px;
+}
+
+#article_top{
+	padding:20px 20px 10px;
+}
+#title{
+	width:540px;padding-left:10px;
+}
+label{
+	font-size:14px;
+	/* font-weight:bold; */
+}
+.article_top_keyword{
+	font-size:14px;
+	margin-right:5px;
+}
+#article_content{
+	padding:0px 20px;
+}
+#more_table{
+	display: table;
+	border-spacing: 20px 10px;
+}
+#classification_div{
+	display:table-row;
+	vertical-align:top;
+	padding:20px 20px 5px;
+}
+#tag_div{
+	display:table-row;
+	vertical-align:top;
+	padding:20px 20px 5px;
+}
+
+#setting{
+	display:table-row;
+	vertical-align:top;
+	padding:20px 20px 5px;
+}
+#article_form{
+	padding:20px 20px 5px;
+	margin:10px auto;
+}
+
+
+.more_table_cell{
+	display: table-cell;
+	vertical-align: top;
+}
+
+
+#toolSider{
+	position:fixed;
+	right:10px;
+	bottom:2%;
+}
+#toolSider ul li{
+	display: list-item;
+	width:46px;height:46px;
+	margin-top:5px;
+}
+#fenlei a{
+	color:orange;
+}
+#fenlei a:HOVER{
+	cursor:pointer;
+	color:orange;
+}
+
+#tag_content{position: relative;}
+/* 处理关键字，也就是标签的问题 */
+#tags{
+	width:450px;
+	height:23px;
+	padding-left:15px;
+}
+#showTag{
+	width:467px;
+	top:25px;left:2px;
+	background-color:#F2F2F2;
+	border:1px solid#D7D9D7;
+	display: none;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+#closeTag{
+	float:right;
+	margin-right:5px;
+}
+#showTag img:HOVER {
+	cursor:pointer;
+}
+#showTag label:HOVER{
+	cursor:pointer;
+	background-color:#FFCC99;
+}
+.tag{
+	display:inline-block;
+	margin-right:15px;margin-left:10px;margin-bottom:15px;
+	padding:5px 15px; 
+    background:#E0E1E0; 
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius:15px;
+}
+
+/* 处理页面的遮罩层 */
+#fullbg {
+    background-color:gray;
+    left: 0px;
+    opacity: 0.5;
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5; 
+    -khtml-opacity: 0.5;
+    display: none;
+}
+#dialog {
+    background-color:#fff;
+    border: 1px solid #888;
+    display: none;
+    height: 200px;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    padding: 12px;
+    position: fixed !important;
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    z-index: 5;
+}
+#dialog p {
+    margin: 0 0 12px;
+}
+#dialog p.close {
+    text-align: right;
+}

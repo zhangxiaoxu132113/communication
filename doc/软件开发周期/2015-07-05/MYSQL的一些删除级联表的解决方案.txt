@@ -1,0 +1,15 @@
+MYSQL: Cannot delete or update a parent row: a foreign key constraint fails
+ 
+
+这可能是MySQL在InnoDB中设置了foreign key关联，造成无法更新或删除数据。可以通过设置FOREIGN_KEY_CHECKS变量来避免这种情况。 
+
+
+SET FOREIGN_KEY_CHECKS = 0; 
+删除完成后设置 
+SET FOREIGN_KEY_CHECKS = 1; 
+
+
+其他： 
+关闭唯一性校验 
+set unique_checks=0; 
+set unique_checks=1;

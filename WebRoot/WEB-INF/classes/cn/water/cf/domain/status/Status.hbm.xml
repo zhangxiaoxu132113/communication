@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+	private long id;				//id
+	private User user;				//作者
+	private String text;			//微博内容
+	private Date created_at; 		//创建时间
+	private int reposts_count;		//转发数
+	private int contents_count;		//评论数
+	private int attitudes_count;	//表态数
+	private String thumbnail_pic;   //配图（注：多张配图以分号隔开）
+	private Status retweeted_status;//被转发的微博 -->
+	<class table="t_status" name="cn.water.cf.domain.status.Status">
+		<id name="id" column="id" type="java.lang.Long">
+			<generator class="increment"></generator>
+		</id>
+		<property name="text" type="java.lang.String">
+			<column name="text" />
+		</property>
+		<property name="created_at" type="java.util.Date">
+			<column name="created_at" ></column>
+		</property>
+		<property name="reposts_count" type="java.lang.Integer">
+			<column name="reposts_count" ></column>
+		</property>
+		<property name="contents_count" type="java.lang.Integer">
+			<column name="contents_count" ></column>
+		</property>
+		<property name="attitudes_count" type="java.lang.Integer">
+			<column name="attitudes_count" ></column>
+		</property>
+		<property name="thumbnail_pic" type="java.lang.String">
+			<column name="thumbnail_pic" ></column>
+		</property>
+		<many-to-one name="user" 
+                     class="cn.water.cf.domain.User" 
+                     cascade="none"
+                     column="user"
+                     not-null="true" >
+	    </many-to-one>
+	    <!-- <one-to-one name="retweeted_status" 
+	    			class="cn.water.cf.domain.status.Status"
+	    			constrained="true"
+	    			cascade="none">
+	    </one-to-one>  -->
+	</class>
+	
+</hibernate-mapping>

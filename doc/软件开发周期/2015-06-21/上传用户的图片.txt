@@ -1,0 +1,47 @@
+今天天气炎热，在宿舍里完成了文件上传的模块，这个模块在这次开发中还是非常重要的。
+1，情景描述
+   用户需要上传自己的头像，所这里需要使用到了struts的文件上传的功能
+2，开发步骤
+	2.1，创建bean，Photo.java
+	private File myFile;
+	private String myFileContentType;
+	private String myFileFileName;
+	
+	注意命名的规范
+	xxx
+	xxxContentType
+	xxxFileName
+	
+	生成对应的setter 和 getter 。。。方法
+	
+	2.2 struts文件要配置相应的参数
+	<!-- 上传文件大小的限制 -->
+	<constant name="struts.multipart.maxSize" value="2073741824"/>
+	
+	<!-- 配置fileUpload拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传文件类型 -->
+				<param name="allowedTypes">image/bmp,image/jpeg,image/gif,image/png,image/pjpeg</param>
+				<!-- 配置允许上传文件大小最大值 -->
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+			
+			
+	2.3，其他的代码就看PhotoUpload.java
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+一，使用标签的方式在项目引入ckeditor编辑器
+1，导入相应的jar
+2，在jsp的头部引入ckeditor的标签
+
+1，{id:"Upload",hidden:!0-----讲这里的感叹号去掉，页面就可以显示上传服务器的按钮。
+2，config.filebrowserImageUploadUrl= "system/userArticleFileUpload.action"; //待会要上传的action或servlet
+
+步骤总结：
+1，<%@ taglib uri="http://ckeditor.com" prefix="ck" %>
+2，
+<!-- 编辑文章内容 -->
+<div id="article_content">
+	<ck:editor   editor="content" basePath="/ckeditor4.1"  >
+	</ck:editor>
+	<!--
+		editor="content" request根据content取值
+	-->
+</div>
+
+
+
+
+

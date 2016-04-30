@@ -1,0 +1,16 @@
+<many-to-one name="owner" 
+        class="cn.water.cf.domain.User" 
+        cascade="none"
+        column="owner"
+        not-null="true"
+        lazy="false" >
+
+		lazy="false"
+		这个不要忘记添加上去
+		
+		
+		
+		
+		
+		
+		
